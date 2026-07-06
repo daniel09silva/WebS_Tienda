@@ -2,7 +2,7 @@
 FROM node:20-alpine AS assets
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 COPY resources resources
 COPY public public
 COPY vite.config.js vite.icons.plugin.js ./
