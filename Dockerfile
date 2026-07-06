@@ -25,7 +25,8 @@ COPY --from=assets /app/public/build public/build
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-RUN chmod -R 775 storage bootstrap/cache
+RUN mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/testing storage/framework/views storage/logs storage/app/public storage/app/private bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
 
 EXPOSE 10000
 
